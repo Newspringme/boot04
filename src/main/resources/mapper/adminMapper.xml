@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.great.mapper.AdminMapper">
+<!--后台登录-->
+    <select id="login" resultType="com.great.pojo.Admininfo">
+        select * from tb_admin where admin_name=#{adminName} and admin_pass=#{adminPass}
+    </select>
+<!--    &lt;!&ndash;    查询记录数&ndash;&gt;-->
+<!--    <select id="queryCount" parameterType="com.great.pojo.Admininfo" resultType="int">-->
+<!--        select count(*)as count from tb_admin-->
+<!--        <where>-->
+<!--            <if test="adminName!=null and adminName!=''">and admin_name like concat('%',#{adminName},'%')</if>-->
+<!--            <if test="startTime!=null and startTime!=''">and reg_time &gt;=#{startTime}</if>-->
+<!--            <if test="endTime!=null and endTime!=''">and reg_time &lt;= #{endTime}</if>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    &lt;!&ndash;    条件查询&ndash;&gt;-->
+<!--    <select id="queryAdmin" resultType="com.great.pojo.Admininfo">-->
+<!--        select a.admin_id,a.admin_name,a.reg_time,r.role_name,r.role_id from tb_admin a left join tb_admin_role ar on-->
+<!--        ar.admin_id=a.admin_id-->
+<!--        left join tb_role r on r.role_id=ar.role_id-->
+<!--        <where>-->
+<!--            <if test="admininfo.adminName!=null and admininfo.adminName!=''">and admin_name like-->
+<!--                concat('%',#{admininfo.adminName},'%')-->
+<!--            </if>-->
+<!--            <if test="admininfo.startTime!=null and admininfo.startTime!=''">and reg_time &gt;=#{admininfo.startTime}-->
+<!--            </if>-->
+<!--            <if test="admininfo.endTime!=null and admininfo.endTime!=''">and reg_time &lt;= #{admininfo.endTime}</if>-->
+<!--        </where>-->
+<!--        limit #{start},#{pageSize};-->
+<!--    </select>-->
+<!--    &lt;!&ndash;    添加管理员&ndash;&gt;-->
+<!--    <insert id="addAdmin" keyProperty="adminId" useGeneratedKeys="true" parameterType="com.great.pojo.Admininfo">-->
+<!--        insert into tb_admin (admin_name,admin_pass)values (#{adminName},#{adminPass});-->
+<!--    </insert>-->
+<!--    &lt;!&ndash;    添加管理员角色关系&ndash;&gt;-->
+<!--    <insert id="addAdminRole" parameterType="com.great.pojo.Admininfo">-->
+<!--        insert into tb_admin_role (admin_id,role_id)values (#{adminId},#{roleId});-->
+<!--    </insert>-->
+<!--    &lt;!&ndash;    级联删除管理员&ndash;&gt;-->
+<!--    <delete id="deleteAdmin" parameterType="java.lang.Integer">-->
+<!--        delete from tb_admin where admin_id in-->
+<!--        <foreach collection="array" item="item" open="(" separator="," close=")">-->
+<!--            #{item}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+<!--    &lt;!&ndash;    更新管理员信息&ndash;&gt;-->
+<!--    <update id="updateAdmin" parameterType="com.great.pojo.Admininfo">-->
+<!--        update tb_admin-->
+<!--        <set>-->
+<!--            <if test="adminName!=null and adminName!=''">admin_name=#{adminName}</if>-->
+<!--        </set>-->
+<!--        where admin_id=#{adminId}-->
+<!--    </update>-->
+<!--    &lt;!&ndash;    更新管理员角色&ndash;&gt;-->
+<!--    <update id="updateAdminRole" parameterType="com.great.pojo.Admininfo">-->
+<!--        update tb_admin_role-->
+<!--        <set>-->
+<!--            <if test="roleId!=null and roleId!=''">role_id=#{roleId}</if>-->
+<!--        </set>-->
+<!--        where admin_id=#{adminId}-->
+<!--    </update>-->
+<!--    &lt;!&ndash;    获取角色id&ndash;&gt;-->
+<!--    <select id="queryRoleId" resultType="int">-->
+<!--        select role_id from tb_admin_role where admin_id=#{adminId};-->
+<!--    </select>-->
+<!--    &lt;!&ndash;    获取角色菜单id&ndash;&gt;-->
+<!--    <select id="queryMenuId" resultType="int">-->
+<!--        select menu_id from tb_role_menu where role_id=#{roleId};-->
+<!--    </select>-->
+<!--    &lt;!&ndash;    获取角色菜单&ndash;&gt;-->
+<!--    <select id="queryMenu" resultType="com.great.pojo.Menuinfo">-->
+<!--        select * from tb_menu where menu_id in-->
+<!--        <foreach collection="list" item="item" open="(" separator="," close=")">-->
+<!--            #{item}-->
+<!--        </foreach>-->
+<!--    </select>-->
+
+</mapper>
